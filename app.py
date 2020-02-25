@@ -15,8 +15,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///swan.db'
 app.config['image_name'] = 'swan'
 app.config['image_list'] = create_image_list('./static/pictures/')
 
-
-
 @app.route('/',methods=['POST','GET'])
 def index():
 
