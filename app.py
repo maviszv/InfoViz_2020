@@ -27,13 +27,7 @@ class Todo(db.Model):
 
 @app.route('/',methods=['POST','GET'])
 def index():
-    image_name = 'swan'
-    image_name = Todo(name = image_name)
-    try:
-        db.session.add(image_name)
-        db.session.commit()
-    except:
-        return "There was an issue adding your task!"
+    #It needs some error handeling
     if request.method == "POST":
         image_name = request.form["content"]
         image_name = Todo(name = image_name)
