@@ -48,8 +48,5 @@ def index():
 
         return render_template('index.html', image = message ,user_image = full_filename, image_list = image_list )
 
-
-
-
 if __name__ == "__main__":
     app.run(debug = True)
