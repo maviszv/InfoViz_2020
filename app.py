@@ -1,6 +1,7 @@
 from flask import Flask, render_template , url_for, request,redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import pandas as pd
 import os
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -11,12 +12,16 @@ def create_image_list(path) :
     return image_list
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///swan.db'
 app.config['image_name'] = 'swan'
 app.config['image_list'] = create_image_list('./static/pictures/')
+app.config['attributes'] = pd.read_csv("./static/attributes/NOWHERE_DATASET.csv", header=[0, 1], index_col=0)
+# Should we use a sqllite database istead of a pandas library
 
 @app.route('/',methods=['POST','GET'])
 def index():
+
+
+
 
     if request.method == "POST":
         app.config['image_name'] = request.form["content"]
@@ -29,6 +34,14 @@ def index():
         full_filename = os.path.join(PEOPLE_FOLDER , picture_filename)
 
         image_list = app.config['image_list']
+        db_attributes = app.config['attributes']
+
+        for loop in db_attributes.index:
+            if str(db_attributes.loc[loop,"Name"]['Name']+'.jpg') not in image_list:
+                print (db_attributes.loc[loop,"Name"]['Name'])
+
+
+
 
         return render_template('index.html', image = image_name ,user_image = full_filename, image_list = image_list )
 
