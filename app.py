@@ -34,6 +34,7 @@ def index():
         full_filename = os.path.join(PEOPLE_FOLDER , picture_filename)
 
         image_list = app.config['image_list']
+
         db_attributes = app.config['attributes']
 
 
