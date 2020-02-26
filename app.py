@@ -37,14 +37,6 @@ def index():
         db_attributes = app.config['attributes']
 
 
-        for loop in image_list:
-            if loop[:-4] not in db_attributes.loc[:,"Name"]['Name'].values.tolist():
-                print (loop[:-4])
-        for loop in db_attributes.index:
-            if str(db_attributes.loc[:,"Name"]['Name']+'.jpg') not in image_list:
-                print (db_attributes.loc[loop,"Name"]['Name'])
-
-
 
 
         return render_template('index.html', image = image_name ,user_image = full_filename, image_list = image_list )
