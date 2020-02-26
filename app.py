@@ -36,7 +36,7 @@ def index():
 
         return render_template('index.html', image = image_name ,user_image = full_filename, image_list = image_list )
 
-@app.route('/graph', methods=['POST','GET'])
+@app.route('/graph/', methods=['POST','GET'])
 def graph():
 
     if request.method == 'POST':

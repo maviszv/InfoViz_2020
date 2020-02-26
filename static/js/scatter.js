@@ -1,25 +1,5 @@
-{% extends "base.html"   %}
-
-{% block head %}
-    <script src='https://unpkg.com/d3@5.15.0/dist/d3.min.js'></script>
-{% endblock %}
-
-{% block body %}
-<div class = "content">
-  <h1   style="text-align:center">   N_O_W_H_E_R_E  </h1>
-  <form action="/" method="GET" style="text-align:center" >
-      <input type="submit" value="Go to Picture">
-  </form>
-</div>
-
-<svg width = "960" height = "500" >
-<script type="text/javascript" src="../static/js/scatter.js"></script>
-</svg>
-
-
-<script type="text/javascript">
 import {select,
-        arc,
+        arc, 
         csv,
         scaleLinear,
         max,
@@ -97,11 +77,3 @@ import {select,
             		startAngle:Math.PI / 2,
             	  endAngle:Math.PI * 3/2
                 }));
-
-
-</script>
-
-
-
-
-{% endblock %}
