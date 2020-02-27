@@ -10,20 +10,14 @@
   <form action="/" method="GET" style="text-align:center" >
       <input type="submit" value="Go to Picture">
   </form>
-
-  <svg width = "960" height = "450" >
+  <h3 style="text-align:center" >Scatter Plot of Picture Atrributes</h3>
+  <svg width = "960" height = "410" >
   </svg>
-
-
-
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script>
 
 
-
-
-
- d3.csv('/graph/data/endpoint')
+ d3.csv('/graph/data/attributes')
    .then(data => {
    data.forEach(d => {
      d.x_v = +d.x_v;
@@ -36,10 +30,10 @@
    const height = +svg.attr('height');
 
    const xAxislabel = 'Variable 1';
-   const yAxislabel = 'Variable 2'
+   const yAxislabel = 'Variable 2';
 
 
-   const margin = {top: 50 , right: 50 , bottom: 100, left: 50};
+   const margin = {top: 10 , right: 50 , bottom: 50, left: 50};
    const innerwidth = width - margin.left - margin.right;
    const innerheight = height - margin.top - margin.bottom;
 
@@ -84,21 +78,35 @@
     .remove();
 
 
+  yAxisG.append('text')
+    .attr('class','axis-label')
+    .attr('y',-17)
+    .attr('x', -innerheight/2  + 15)
+    .attr('fill','black')
+    .attr('transform','rotate(-90)')
+    .attr('text-anchor','middle')
+    .text(yAxislabel);
+
+
+    xAxisG.append('text')
+      	.attr('class','axis-label')
+      	.attr('y',30)
+      	.attr('x',innerwidth/2)
+        .attr('fill','black')
+    		.text(xAxislabel);
+
+
 
    g.selectAll('circle').data(data)
      .enter().append('circle')
      .transition()
-      .duration(1000)
+      .duration(3000)
      .attr('cy', d => yScale(yValue(d)) )
      .attr('cx', d => xScale(xValue(d)) )
      .attr('r', 6);
 
 
  });
-
-
-
-
   </script>
 </div>
 

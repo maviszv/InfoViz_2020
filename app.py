@@ -51,7 +51,7 @@ def graph():
         return  render_template('graph.html')
 
 
-@app.route('/graph/data/endpoint')
+@app.route('/graph/data/attributes')
 def get_d3_data():
     df = app.config['data']
     return df.to_csv()
