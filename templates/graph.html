@@ -29,8 +29,8 @@
    const width = +svg.attr('width');
    const height = +svg.attr('height');
 
-   const xAxislabel = 'Variable 1';
-   const yAxislabel = 'Variable 2';
+   const xAxislabel = ' ';
+   const yAxislabel = ' ';
 
 
    const margin = {top: 10 , right: 50 , bottom: 50, left: 50};
@@ -100,7 +100,7 @@
    g.selectAll('circle').data(data)
      .enter().append('circle')
      .transition()
-      .duration(3000)
+      .duration(1000)
      .attr('cy', d => yScale(yValue(d)) )
      .attr('cx', d => xScale(xValue(d)) )
      .attr('r', 6);
