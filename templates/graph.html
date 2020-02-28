@@ -20,8 +20,8 @@
  d3.csv('/graph/data/attributes')
    .then(data => {
    data.forEach(d => {
-     d.x_v = +d.x_v;
-     d.y_v = +d.y_v;
+     d.x = +d.x;
+     d.y = +d.y;
    })
  	 console.log(data);
 
@@ -39,8 +39,8 @@
 
 
 
- const xValue =  d => d.x_v;
- const yValue = d => d.y_v;
+ const xValue =  d => d.x;
+ const yValue = d => d.y;
 
 
    // xScale
@@ -100,11 +100,10 @@
    g.selectAll('circle').data(data)
      .enter().append('circle')
      .transition()
-      .duration(1000)
+     .duration(3000)
      .attr('cy', d => yScale(yValue(d)) )
      .attr('cx', d => xScale(xValue(d)) )
      .attr('r', 6);
-
 
  });
   </script>
