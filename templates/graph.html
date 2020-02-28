@@ -13,9 +13,20 @@
   <h3 style="text-align:center" >Scatter Plot of Picture Atrributes</h3>
   <svg width = "960" height = "410" >
   </svg>
+  <style>
+  .d3-tip {
+  line-height: 1;
+  padding: 2px;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: sans-serif;
+  color: white;
+  border-radius: 2px;
+  }
+  </style>
   <script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- <script src="d3-tip.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
   <script>
-
 
  d3.csv('/graph/data/attributes')
    .then(data => {
@@ -41,6 +52,27 @@
 
  const xValue =  d => d.x;
  const yValue = d => d.y;
+
+ var tool_tip = d3.tip()
+   .attr('class', 'd3-tip')
+   .direction('e')
+   .offset([0,5])
+   .html(function(d) {
+       // var content = "<span style='margin-left: 2.5px;'><b>" + d.name + "</b></span><br>";
+       var content = "<span style='margin-left: 2.5px;'><b>" + "XXX" + "</b></span><br>";
+       // content +=`
+       //     <table style="margin-top: 2.5px;">
+       //             <tr><td>Max: </td><td style="text-align: right">` + d3.format(".2f")(d.whiskers[0]) + `</td></tr>
+       //             <tr><td>Q3: </td><td style="text-align: right">` + d3.format(".2f")(d.quartile[0]) + `</td></tr>
+       //             <tr><td>Median: </td><td style="text-align: right">` + d3.format(".2f")(d.quartile[1]) + `</td></tr>
+       //             <tr><td>Q1: </td><td style="text-align: right">` + d3.format(".2f")(d.quartile[2]) + `</td></tr>
+       //             <tr><td>Min: </td><td style="text-align: right">` + d3.format(".2f")(d.whiskers[1]) + `</td></tr>
+       //     </table>
+       //     `;
+       return content;
+   });
+
+ svg.call(tool_tip);
 
 
    // xScale
@@ -103,7 +135,11 @@
      .duration(3000)
      .attr('cy', d => yScale(yValue(d)) )
      .attr('cx', d => xScale(xValue(d)) )
-     .attr('r', 6);
+     .attr('r', 6)
+
+    g.selectAll('circle')
+     .on('mouseover', tool_tip.show)
+     .on('mouseout', tool_tip.hide);
 
  });
   </script>
