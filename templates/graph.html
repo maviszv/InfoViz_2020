@@ -28,6 +28,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
   <script>
 
+
  d3.csv('/graph/data/attributes')
    .then(data => {
    data.forEach(d => {
@@ -60,17 +61,13 @@
    .html(function(d) {
        // var content = "<span style='margin-left: 2.5px;'><b>" + d.name + "</b></span><br>";
        var content = "<span style='margin-left: 2.5px;'><b>" + "XXX" + "</b></span><br>";
-       // content +=`
-       //     <table style="margin-top: 2.5px;">
-       //             <tr><td>Max: </td><td style="text-align: right">` + d3.format(".2f")(d.whiskers[0]) + `</td></tr>
-       //             <tr><td>Q3: </td><td style="text-align: right">` + d3.format(".2f")(d.quartile[0]) + `</td></tr>
-       //             <tr><td>Median: </td><td style="text-align: right">` + d3.format(".2f")(d.quartile[1]) + `</td></tr>
-       //             <tr><td>Q1: </td><td style="text-align: right">` + d3.format(".2f")(d.quartile[2]) + `</td></tr>
-       //             <tr><td>Min: </td><td style="text-align: right">` + d3.format(".2f")(d.whiskers[1]) + `</td></tr>
-       //     </table>
-       //     `;
-       return content;
-   });
+       var img_route = "{{user_image}}" + d.img + '.jpg'
+   return `<img src="` +  img_route + `" height="420" width="420" style="float: left; margin: 0px 15px 15px 0px;" border="2"></img>`
+          // "Country: " + d.img + "<br/>" +
+          // "Pct of women researchers: " + "<br/>" +
+          // "Consumer confidence: " + "<br/>" +
+          // "Year: ";
+        });
 
  svg.call(tool_tip);
 

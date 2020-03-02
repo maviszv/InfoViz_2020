@@ -47,8 +47,13 @@ def graph():
             return "There was an issue updating your task"
 
     else :
+        image_name = app.config['image_name']
+        PEOPLE_FOLDER = os.path.join('..', 'static', 'pictures','')
+        #picture_filename = image_name + '.jpg'
+        #full_filename = os.path.join(PEOPLE_FOLDER , picture_filename)
+        #'..\staic\pictures' + '\' + d.img + '.jpg'
         get_d3_data()
-        return  render_template('graph.html')
+        return  render_template('graph.html',user_image = PEOPLE_FOLDER)
 
 
 @app.route('/graph/data/attributes')
