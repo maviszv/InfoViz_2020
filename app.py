@@ -26,11 +26,14 @@ def index():
         return redirect('/')
 
     else:
+
+
         image_name = app.config['image_name']
+
         PEOPLE_FOLDER = os.path.join('static', 'pictures')
         picture_filename = image_name + '.jpg'
         full_filename = os.path.join(PEOPLE_FOLDER , picture_filename)
-
+        print (full_filename)
         image_list = app.config['image_list']
         db_attributes = app.config['attributes']
 

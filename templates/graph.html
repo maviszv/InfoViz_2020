@@ -46,13 +46,14 @@
 
 
 
+
  var tool_tip = d3.tip()
    .attr('class', 'd3-tip')
    .direction('e')
    .offset([0,5])
    .html(function(d) {
        // var content = "<span style='margin-left: 2.5px;'><b>" + d.name + "</b></span><br>";
-       var content = "<span style='margin-left: 2.5px;'><b>" + "XXX" + "</b></span><br>";
+       var content = "<span style='margin-left: 2.5px;'><b>" + d.img + "</b></span><br>";
        // content +=`
        //     <table style="margin-top: 2.5px;">
        //             <tr><td>Max: </td><td style="text-align: right">` + d3.format(".2f")(d.whiskers[0]) + `</td></tr>
@@ -135,7 +136,6 @@
      g.selectAll('circle')
       .on('mouseover', tool_tip.show)
       .on('mouseout', tool_tip.hide);
-
  });
   </script>
 </div>
